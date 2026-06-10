@@ -1,0 +1,20 @@
+date,narration,debit,credit,balance
+01/04/2024,Opening Balance,,,50000
+05/04/2024,Salary Credit HDFC Bank,,45000,95000
+10/04/2024,Home Loan EMI - SBI,18000,,77000
+12/04/2024,Car Loan EMI - HDFC,7500,,69500
+15/04/2024,Electricity Bill,1200,,68300
+18/04/2024,Grocery Store,3500,,64800
+22/04/2024,UPI Transfer - Friend,2000,,62800
+05/05/2024,Salary Credit HDFC Bank,,45000,107800
+10/05/2024,Home Loan EMI - SBI,18000,,89800
+12/05/2024,Car Loan EMI - HDFC,7500,,82300
+14/05/2024,Personal Loan EMI - Bajaj,5000,,77300
+16/05/2024,Mobile Recharge,499,,76801
+20/05/2024,Insurance Premium,3000,,73801
+25/05/2024,BOUNCE - Home Loan EMI Returned,,,73801
+28/05/2024,Home Loan EMI Retry - SBI,18000,,55801
+05/06/2024,Salary Credit HDFC Bank,,45000,100801
+10/06/2024,Home Loan EMI - SBI,18000,,82801
+12/06/2024,Car Loan EMI - HDFC,7500,,75301
+14/06/2024,Personal Loan EMI - Bajaj,5000,,70301

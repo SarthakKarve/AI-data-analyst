@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI CIBIL Store Dashboard</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#7c3aed",
+              secondary: "#3b82f6",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before {
+      content: "\f3c2";
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="flex">
+      <!-- Sidebar -->
+      <div
+        class="w-64 bg-gradient-to-b from-gray-900 to-gray-800 shadow-2xl h-screen fixed left-0 top-0 border-r border-gray-700"
+      >
+        <div class="p-6 border-b border-gray-700">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center"
+            >
+              <i class="ri-store-2-line text-white text-sm"></i>
+            </div>
+            <h2 class="text-lg font-bold text-white">AI CIBIL Store</h2>
+          </div>
+        </div>
+        <nav class="mt-6 px-3">
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 px-3"
+            >
+              Main Menu
+            </p>
+            <div class="space-y-1">
+              <div
+                class="bg-primary/20 text-primary border border-primary/30 rounded-lg mx-0 px-4 py-3 flex items-center gap-3 relative"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-dashboard-3-line text-base"></i>
+                </div>
+                <span class="text-sm font-medium">Dashboard</span>
+                <div
+                  class="absolute right-1 w-1 h-6 bg-primary rounded-full"
+                ></div>
+              </div>
+              <div
+                class="text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg mx-0 px-4 py-3 flex items-center gap-3 cursor-pointer transition-all duration-200"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-bank-line text-base"></i>
+                </div>
+                <span class="text-sm">Loans</span>
+              </div>
+              <div
+                class="text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg mx-0 px-4 py-3 flex items-center gap-3 cursor-pointer transition-all duration-200"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-line-chart-line text-base"></i>
+                </div>
+                <span class="text-sm">CIBIL Predictor</span>
+              </div>
+              <div
+                class="text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg mx-0 px-4 py-3 flex items-center gap-3 cursor-pointer transition-all duration-200"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-shield-check-line text-base"></i>
+                </div>
+                <span class="text-sm">Insurance</span>
+              </div>
+            </div>
+          </div>
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 px-3"
+            >
+              Tools
+            </p>
+            <div class="space-y-1">
+              <div
+                class="text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg mx-0 px-4 py-3 flex items-center gap-3 cursor-pointer transition-all duration-200"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-robot-2-line text-base"></i>
+                </div>
+                <span class="text-sm">ChatBot</span>
+              </div>
+              <div
+                class="text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg mx-0 px-4 py-3 flex items-center gap-3 cursor-pointer transition-all duration-200"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-notification-3-line text-base"></i>
+                </div>
+                <span class="text-sm">Reminders</span>
+              </div>
+              <div
+                class="text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg mx-0 px-4 py-3 flex items-center gap-3 cursor-pointer transition-all duration-200"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-folder-3-line text-base"></i>
+                </div>
+                <span class="text-sm">Documents</span>
+              </div>
+            </div>
+          </div>
+          <div class="absolute bottom-6 left-3 right-3">
+            <div class="border-t border-gray-700 pt-4">
+              <div
+                class="text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg px-4 py-3 flex items-center gap-3 cursor-pointer transition-all duration-200"
+              >
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-user-3-line text-base"></i>
+                </div>
+                <span class="text-sm">Profile</span>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- Main Content -->
+      <div class="ml-64 flex-1">
+        <!-- Header -->
+        <header
+          class="bg-gray-800 text-white px-8 py-4 flex justify-between items-center"
+        >
+          <h1 class="text-lg font-semibold">AI CIBIL Store</h1>
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-notification-line"></i>
+              </div>
+              <div
+                class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"
+              ></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <div
+                class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-medium"
+              >
+                P
+              </div>
+              <span class="text-sm">Prathamesh</span>
+            </div>
+          </div>
+        </header>
+        <!-- Welcome Banner -->
+        <div
+          class="bg-gradient-to-r from-primary to-purple-600 text-white p-8 m-8 rounded-lg"
+        >
+          <h2 class="text-2xl font-bold mb-2">Welcome Back, Prathamesh!</h2>
+          <p class="text-purple-100 mb-4">
+            Your current CIBIL score is 750 - That's Excellent! ⭐
+          </p>
+          <button
+            class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-gray-50 transition-colors whitespace-nowrap !rounded-button"
+          >
+            Get Started →
+          </button>
+        </div>
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-4 gap-6 px-8 mb-8">
+          <div class="bg-white p-6 rounded-lg shadow-sm border">
+            <div class="flex items-center justify-between">
+              <div>
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-lg mb-3"
+                >
+                  <i class="ri-file-text-line text-blue-600"></i>
+                </div>
+                <div class="text-2xl font-bold text-gray-800">3</div>
+                <div class="text-sm text-gray-600">Active Loans</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border">
+            <div class="flex items-center justify-between">
+              <div>
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-lg mb-3"
+                >
+                  <i class="ri-trending-up-line text-green-600"></i>
+                </div>
+                <div class="text-2xl font-bold text-gray-800">750</div>
+                <div class="text-sm text-gray-600">CIBIL Score</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border">
+            <div class="flex items-center justify-between">
+              <div>
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-orange-100 rounded-lg mb-3"
+                >
+                  <i class="ri-time-line text-orange-600"></i>
+                </div>
+                <div class="text-2xl font-bold text-gray-800">5</div>
+                <div class="text-sm text-gray-600">Pending Reminders</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border">
+            <div class="flex items-center justify-between">
+              <div>
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-lg mb-3"
+                >
+                  <i class="ri-folder-line text-purple-600"></i>
+                </div>
+                <div class="text-2xl font-bold text-gray-800">12</div>
+                <div class="text-sm text-gray-600">Documents</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Quick Actions -->
+        <div class="px-8 mb-8">
+          <h3 class="text-xl font-bold text-gray-800 mb-6">Quick Actions</h3>
+          <div class="grid grid-cols-3 gap-6">
+            <div
+              class="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-lg mb-4"
+              >
+                <i class="ri-play-circle-line text-blue-600 text-xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">Video Tutorials</h4>
+              <p class="text-sm text-gray-600">
+                Learn how to improve your CIBIL score
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-green-100 rounded-lg mb-4"
+              >
+                <i class="ri-headphone-line text-green-600 text-xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">Audio Guides</h4>
+              <p class="text-sm text-gray-600">
+                Listen to financial advice on the go
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-purple-100 rounded-lg mb-4"
+              >
+                <i class="ri-folder-open-line text-purple-600 text-xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">
+                Documents Library
+              </h4>
+              <p class="text-sm text-gray-600">
+                Access all your important documents
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-lg mb-4"
+              >
+                <i class="ri-line-chart-line text-indigo-600 text-xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">CIBIL Predictor</h4>
+              <p class="text-sm text-gray-600">
+                Predict and improve your credit score
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-orange-100 rounded-lg mb-4"
+              >
+                <i class="ri-calculator-line text-orange-600 text-xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">
+                Insurance Calculator
+              </h4>
+              <p class="text-sm text-gray-600">
+                Find the perfect insurance plan
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-teal-100 rounded-lg mb-4"
+              >
+                <i class="ri-robot-line text-teal-600 text-xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">AI ChatBot</h4>
+              <p class="text-sm text-gray-600">Get instant loan assistance</p>
+            </div>
+          </div>
+        </div>
+        <!-- Improve CIBIL Score Section -->
+        <div class="px-8 pb-8">
+          <h3 class="text-xl font-bold text-gray-800 mb-6">
+            Improve Your CIBIL Score
+          </h3>
+          <p class="text-gray-600 mb-6">
+            Follow these tips to boost your credit score
+          </p>
+          <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm border">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <h4 class="font-semibold text-gray-800">Pay Bills on Time</h4>
+                  <div class="w-4 h-4 flex items-center justify-center">
+                    <i class="ri-information-line text-gray-400 text-sm"></i>
+                  </div>
+                </div>
+                <span class="text-sm font-medium text-gray-600">85%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                <div
+                  class="bg-primary h-2 rounded-full"
+                  style="width: 85%"
+                ></div>
+              </div>
+              <p class="text-sm text-gray-600">
+                Set up automatic payments to never miss a due date
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm border">
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="font-semibold text-gray-800">
+                  Reduce Credit Utilization
+                </h4>
+                <span class="text-sm font-medium text-gray-600">55%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                <div
+                  class="bg-orange-500 h-2 rounded-full"
+                  style="width: 55%"
+                ></div>
+              </div>
+              <p class="text-sm text-gray-600">
+                Keep your credit card usage below 30% of your limit
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script id="sidebar-navigation">
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebarItems = document.querySelectorAll("nav .space-y-1 > div");
+        sidebarItems.forEach((item) => {
+          if (!item.classList.contains("bg-primary/20")) {
+            item.addEventListener("click", function () {
+              sidebarItems.forEach((i) => {
+                i.classList.remove(
+                  "bg-primary/20",
+                  "text-primary",
+                  "border",
+                  "border-primary/30",
+                );
+                i.classList.add(
+                  "text-gray-300",
+                  "hover:bg-gray-700/50",
+                  "hover:text-white",
+                );
+                const indicator = i.querySelector(".absolute");
+                if (indicator) indicator.remove();
+              });
+              this.classList.remove(
+                "text-gray-300",
+                "hover:bg-gray-700/50",
+                "hover:text-white",
+              );
+              this.classList.add(
+                "bg-primary/20",
+                "text-primary",
+                "border",
+                "border-primary/30",
+              );
+              const indicator = document.createElement("div");
+              indicator.className =
+                "absolute right-1 w-1 h-6 bg-primary rounded-full";
+              this.appendChild(indicator);
+            });
+          }
+        });
+      });
+    </script>
+    <script id="quick-actions-interaction">
+      document.addEventListener("DOMContentLoaded", function () {
+        const actionCards = document.querySelectorAll(".grid.grid-cols-3 > div");
+        actionCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            const title = this.querySelector("h4").textContent;
+            console.log(`Clicked on: ${title}`);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

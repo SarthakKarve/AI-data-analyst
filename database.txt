@@ -1,0 +1,125 @@
+create DATABASE cibil;
+use cibil;
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100),
+    email VARCHAR(150) NOT NULL UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    address TEXT,
+    dob DATE,
+    marital_status ENUM('Single', 'Married', 'Divorced', 'Widowed'),
+    employment_status VARCHAR(100),
+    employment_history TEXT,
+    annual_income DECIMAL(12,2),
+    google_login BOOLEAN DEFAULT FALSE,
+    profile_pic VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE loans (
+    loan_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    loan_amount DECIMAL(15,2) NOT NULL,
+    purpose VARCHAR(255),
+    repayment_period INT, -- months
+    installment_option ENUM('Monthly', 'Quarterly', 'Yearly') DEFAULT 'Monthly',
+    status ENUM('Active', 'Approved', 'Pending', 'Closed') DEFAULT 'Pending',
+    interest_rate DECIMAL(5,2),
+    emi_amount DECIMAL(12,2),
+    start_date DATE,
+    end_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE cibil_scores (
+    score_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    cibil_score INT CHECK (cibil_score BETWEEN 300 AND 900),
+    score_type ENUM('Predicted', 'Official') DEFAULT 'Predicted',
+    prediction_source ENUM('Manual', 'Database'),
+    ai_model_used VARCHAR(100) DEFAULT 'Gemini API',
+    prediction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    recommendation TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE insurance (
+    insurance_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    insurance_type VARCHAR(100),
+    premium_amount DECIMAL(12,2),
+    coverage_amount DECIMAL(12,2),
+    start_date DATE,
+    end_date DATE,
+    eligibility_status ENUM('Eligible', 'Not Eligible', 'Pending'),
+    claim_status ENUM('Not Claimed', 'Claimed', 'Rejected') DEFAULT 'Not Claimed',
+    remarks TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE chatbot_history (
+    chat_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    query TEXT,
+    ai_response TEXT,
+    file_uploaded VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE reminders (
+    reminder_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    loan_id INT NULL,
+    title VARCHAR(255),
+    description TEXT,
+    due_date DATE,
+    status ENUM('Upcoming', 'Completed', 'High Priority') DEFAULT 'Upcoming',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (loan_id) REFERENCES loans(loan_id) ON DELETE SET NULL
+);
+
+CREATE TABLE documents (
+    doc_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    doc_title VARCHAR(255),
+    category VARCHAR(100),
+    file_path VARCHAR(255),
+    file_type VARCHAR(50),
+    storage_size_mb DECIMAL(8,2),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE activity_log (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    action VARCHAR(255),
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE recommendations (
+    rec_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    score_id INT,
+    recommendation_text TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (score_id) REFERENCES cibil_scores(score_id) ON DELETE CASCADE
+);
+
+CREATE TABLE tutorials_library (
+    tutorial_id INT AUTO_INCREMENT PRIMARY KEY,
+    type ENUM('Video', 'Audio'),
+    title VARCHAR(255),
+    description TEXT,
+    url VARCHAR(255),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
