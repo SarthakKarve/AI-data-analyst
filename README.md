@@ -1,4 +1,4 @@
-# 🏦 AI CIBIL Store – Credit Scoring & Risk Assessment Platform
+# 🏦 AI Based Credit Scoring & Risk Assessment Platform
 
 AI CIBIL Store is a PHP and MySQL-based web application designed to help users manage their financial activities, estimate CIBIL-like credit scores, monitor loans, organize documents, and receive personalized financial recommendations. The platform combines financial analytics, secure data management, and AI-driven insights within a modern web interface.
 
